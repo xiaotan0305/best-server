@@ -1,15 +1,15 @@
 /*
  * @Author: tankunpeng
  * @Date: 2022-06-08 11:29:56
- * @LastEditTime: 2022-06-10 19:15:40
+ * @LastEditTime: 2022-06-12 00:41:55
  * @LastEditors: tankunpeng
  * @Description:
  * Come on, worker!
  */
 module.exports = {
   port: 3000, // 本地服务器启动端口
-  index: 'index.html',
-  open: false,
+  index: 'index.html', // 指定入口文件html,默认index.html
+  open: false, // 自动打开浏览器
   base: ['./'], // 静态资源目录
   proxy: {
     // 字符串简写写法
@@ -32,7 +32,7 @@ module.exports = {
       ws: true
     }
   },
-  mock: {
+  mock: { // mock接口
     '/hello': {
       target(req, res) {
         // res.send({ text: 'hello world!' });
@@ -40,5 +40,5 @@ module.exports = {
       }
     }
   },
-  watch: ['./index.html']
+  watch: ['./index.html'] // 需要监听的文件或文件夹,变化时自动刷新浏览器
 };

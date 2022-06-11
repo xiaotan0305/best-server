@@ -18,34 +18,33 @@ if (!checkPass) {
 updateCheck();
 
 program
-  .version(`web-server ${chalk.cyan(pkg.version)}`, '-v --version')
+  .version(`best-server ${chalk.cyan(pkg.version)}`, '-v --version')
   .usage('[options]');
 
 program
   .option('-d, --debug', 'Enabling the Debug mode')
-  .option('-c, --config <configName>', 'Specify the configuration file,eg:./ws.config.js')
+  .option('-c, --config <configName>', 'Specify the configuration file,eg:./bs.config.js')
   .option('-p, --port <port>', 'Specify the service port number,eg:3000')
   .option('-t, --timeout <timeout>', 'Specifies the request timeout period in milliseconds,eg:3000')
   .option('-b, --base <base>', 'Specify static directory root paths separated by commas (,) if multiple paths are used,eg:./')
   .option('-o, --open', 'Specifies whether to start the browser after starting the service')
   .option('-i, --index <index>', 'Specified entry file,eg:index.html')
   .option('-w, --watch <watch file>', 'Specifies the folder or file to listen on. Subfolders are not supported. Use commas to separate multiple folders,eg:dist,./index.html')
-  .option('-k, --kill <kill>', 'Kills the specified occupied port.');
+  .action((options) => {
+    if (options.debug) {
+      debugConfig.enabled = true;
+      updateDebugMode();
+    }
+    createServer(options);
+  });
+
+program.command('kill')
+  .description('Kills the specified occupied port or ID of the process.')
+  .argument('[port]', 'Port number to kill')
+  .option('-P, --pids <pids>', 'Specifies the ID of the process to kill, separated by commas,eg: 2344,5566')
+  .action((port, options) => {
+    kill({ port, ...options });
+  });
 
 program.parse();
 
-const opts = program.opts();
-
-if (opts.debug) {
-  debugConfig.enabled = true;
-  updateDebugMode();
-}
-
-if (opts.kill) {
-  kill(opts.kill);
-}
-
-const needCreateServer = !opts.kill;
-if (needCreateServer) {
-  createServer(opts);
-}

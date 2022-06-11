@@ -200,7 +200,7 @@ class WebServer {
       }
       app.listen(port, () => {
         log();
-        done(' Web-Server running at:');
+        done(' best-server running at:');
         log(`         - Local:   ${chalk.cyan(`http://localhost:${port}`)}`);
         log(`         - Network: ${chalk.cyan(`http://${serverIp}:${port}`)}`);
         log();

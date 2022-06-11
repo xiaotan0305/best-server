@@ -18,7 +18,7 @@ const { consoleClear } = require('./utils');
 
 
 const context = process.cwd();
-let configFile = path.resolve(context, 'ws.config.js');
+let configFile = path.resolve(context, 'bs.config.js');
 
 const getConfig = (opts) => {
   const { config } = opts;
@@ -56,8 +56,8 @@ const watchConfig = () => {
       if (lock) return;
       lock = true;
       consoleClear();
-      debugLog('config change ws.config.js');
-      warn(`the configuration file(${chalk.green('ws.config.js')}) changes, the service restarts automatically..`);
+      debugLog('config change bs.config.js');
+      warn(`the configuration file(${chalk.green('bs.config.js')}) changes, the service restarts automatically..`);
       addProcess();
       setTimeout(() => {
         lock = false;

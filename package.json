@@ -1,16 +1,18 @@
 {
-  "name": "web-server",
+  "name": "best-server",
   "version": "0.0.1",
   "description": "A simple server for developing static pages. You can enable proxy requests, or you can customize requests to return data",
   "bin": {
-    "ws": "cli.js"
+    "bs": "cli.js"
   },
   "keywords": [
     "serve",
+    "server",
     "proxy",
     "livereload",
+    "smart-serve",
     "serve-handler",
-    "web-server",
+    "best-server",
     "dev-server",
     "node-server",
     "proxy-server",
@@ -18,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/tankunpeng/web-server"
+    "url": "https://gitee.com/tankunpeng/best-server"
   },
   "author": "tkp1989@foxmail.com",
   "engines": {

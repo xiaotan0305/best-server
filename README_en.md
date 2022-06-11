@@ -1,4 +1,4 @@
-# web-server
+# best-server
 
 A simple server for developing static pages. You can enable proxy requests or customize the route to return data
 
@@ -14,42 +14,3 @@ A simple server for developing static pages. You can enable proxy requests or cu
 2. Modify the configuration file to restart the service automatically
 3. Automatically open the browser after starting the service
 4. Launched services support both local and LAN access
-
-## The installation
-
-Support global installation and project installation
-
-### Use this package globally
-```bash
-npm i web-server -g
-# or
-yarn add web-server -g
-
-# Enter a static directory
-cd ./static/path
-# Start static services
-ws
-# So easy
-```
-
-### 项目内使用
-
-```bash
-# Entry into the project
-cd ./project/path
-# Install dependencies
-npm i web-server -D
-# or
-yarn add web-server -D
-
-# Add run commands to scripts of package.json
-"scripts": {
-  "serve": "ws",
-}
-
-# Add configuration files to the project root directory (optional),The file name: ws.config.js
-
-```
-
-## usage
-
