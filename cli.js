@@ -2,9 +2,10 @@
 
 const program = require('commander');
 const pkg = require('./package.json');
-const { checkNodeVersion } = require('./src/utils/env');
+const { checkNodeVersion, updateCheck } = require('./src/utils/env');
 const { chalk, error, debugConfig, updateDebugMode } = require('./src/utils/logger');
 const createServer = require('./src/createServer');
+const kill = require('./src/killport');
 
 const enginesNodeVersion = pkg.engines.node;
 
@@ -13,6 +14,8 @@ if (!checkPass) {
   error(`You are using Node ${process.version}, but this version of ${pkg.name} requires Node ${enginesNodeVersion}.\r\nPlease upgrade your Node version`);
   process.exit(1);
 }
+
+updateCheck();
 
 program
   .version(`web-server ${chalk.cyan(pkg.version)}`, '-v --version')
@@ -26,7 +29,8 @@ program
   .option('-b, --base <base>', 'Specify static directory root paths separated by commas (,) if multiple paths are used,eg:./')
   .option('-o, --open', 'Specifies whether to start the browser after starting the service')
   .option('-i, --index <index>', 'Specified entry file,eg:index.html')
-  .option('-w, --watch <watch file>', 'Specifies the folder or file to listen on. Subfolders are not supported. Use commas to separate multiple folders,eg:dist,./index.html');
+  .option('-w, --watch <watch file>', 'Specifies the folder or file to listen on. Subfolders are not supported. Use commas to separate multiple folders,eg:dist,./index.html')
+  .option('-k, --kill <kill>', 'Kills the specified occupied port.');
 
 program.parse();
 
@@ -37,4 +41,11 @@ if (opts.debug) {
   updateDebugMode();
 }
 
-createServer(opts);
+if (opts.kill) {
+  kill(opts.kill);
+}
+
+const needCreateServer = !opts.kill;
+if (needCreateServer) {
+  createServer(opts);
+}

@@ -7,6 +7,7 @@
 2. 请求代理转发
 3. 请求mock
 4. 修改代码浏览器热更新
+5. 关闭端口号占用进程
 
 > 其他亮点小功能
 1. 端口号占用自动顺延启动服务
@@ -18,10 +19,35 @@
 
 支持全局安装和项目内安装
 
+### 全局使用
 ```bash
-npm i @zyfp-dcjs/web-server -g
+npm i web-server -g
 # or
-yarn add @zyfp-dcjs/web-server -g
+yarn add web-server -g
+
+# 进入静态目录
+cd ./{路径}
+# 启动静态服务
+ws
+```
+
+### 项目内使用
+
+```bash
+# 进入项目内
+cd {项目路径}
+# 安装依赖
+npm i web-server -D
+# or
+yarn add web-server -D
+
+# package.json scripts中增加运行命令
+"scripts": {
+  "serve": "ws",
+}
+
+# 项目根目录增加配置文件(可选) ws.config.js
+
 ```
 
 ## 使用

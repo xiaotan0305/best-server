@@ -1,7 +1,7 @@
 /*
  * @Author: tankunpeng
  * @Date: 2022-06-07 21:29:31
- * @LastEditTime: 2022-06-10 19:13:38
+ * @LastEditTime: 2022-06-11 22:51:39
  * @LastEditors: tankunpeng
  * @Description: logger
  * Come on, worker!
@@ -46,18 +46,25 @@ exports.error = (msg, tag = null) => {
 };
 
 const debugConfig = {
-  enabled: false,
-  color: 2
+  enabled: false
 };
 exports.debugConfig = debugConfig;
-const dcjsDebug = debug('debug:ws');
+const wsDebugLog = debug('debug:log');
+wsDebugLog.color = 2;
+const wsDebugError = debug('debug:error');
+wsDebugError.color = 1;
 const debugLog = (...args) => {
   if (!debugConfig.enabled) return;
-  return dcjsDebug(...args);
+  return wsDebugLog(...args);
 };
-dcjsDebug.color = debugConfig.color;
+const debugError = (...args) => {
+  if (!debugConfig.enabled) return;
+  return wsDebugError(...args);
+};
 
 exports.updateDebugMode = () => {
-  dcjsDebug.enabled = !!debugConfig.enabled;
+  wsDebugLog.enabled = !!debugConfig.enabled;
+  wsDebugError.enabled = !!debugConfig.enabled;
 };
 exports.debugLog = debugLog;
+exports.debugError = debugError;

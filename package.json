@@ -1,16 +1,15 @@
 {
-  "name": "@zyfp-dcjs/web-server",
-  "version": "0.0.2",
+  "name": "web-server",
+  "version": "0.0.1",
   "description": "A simple server for developing static pages. You can enable proxy requests, or you can customize requests to return data",
   "bin": {
     "ws": "cli.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "rollup -c config/rollup.config.js --watch",
-    "build": "rollup -c config/rollup.config.js"
-  },
   "keywords": [
+    "serve",
+    "proxy",
+    "livereload",
+    "serve-handler",
     "web-server",
     "dev-server",
     "node-server",
@@ -19,12 +18,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://10.102.61.232/DCJS/h5-npm/web-server.git"
+    "url": "https://gitee.com/tankunpeng/web-server"
   },
-  "publishConfig": {
-    "registry": "http://10.102.61.5/artifactory/api/npm/zybank-npm-local/"
-  },
-  "author": "tankunpeng@zybank.com.cn",
+  "author": "tkp1989@foxmail.com",
   "engines": {
     "node": ">= 12.0.0"
   },
@@ -36,6 +32,7 @@
     "cluster": "^0.7.7",
     "commander": "^9.3.0",
     "connect-timeout": "^1.9.0",
+    "cross-port-killer": "^1.4.0",
     "debug": "^4.3.4",
     "deepmerge": "^4.2.2",
     "easy-livereload": "^1.4.3",
@@ -44,13 +41,13 @@
     "http-proxy-middleware": "^2.0.6",
     "ip": "^2.0.0",
     "leven": "^3.1.0",
-    "minimist": "^1.2.6",
     "open": "^8.4.0",
     "portfinder": "^1.0.28",
     "semver": "^7.3.7",
     "serve-handler": "^6.1.3",
     "slash": "^3.0.0",
-    "strip-ansi": "^6.0.1"
+    "strip-ansi": "^6.0.1",
+    "update-check": "^1.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
