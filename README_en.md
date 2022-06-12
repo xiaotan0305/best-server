@@ -15,45 +15,45 @@ A simple server for developing static pages. You can enable proxy requests or cu
 3. Automatically open the browser after starting the service
 4. Launched services support both local and LAN access
 
-## 安装
+## The installation
 
-支持全局安装和项目内安装
+Support global installation and project installation
 
-### 全局安装
+### Global installation
 ```bash
 npm i best-server -g
 # or
 yarn add best-server -g
 ```
 
-### 项目内安装
+### In-project installation
 
 ```bash
-# 进入项目内
+# Entry into the project
 cd ./project/path
-# 安装依赖
+# Install dependencies
 npm i best-server -D
 # or
 yarn add best-server -D
 
 ```
 
-## 使用
+## usage
 
-### 全局使用
+### The global
 
 ```
 cd ./target/path
 bs
-# 就是这么简单!
+# It's that simple!
 ```
 
-### 项目内使用
+### In-project use
 
 ```bash
 cd ./project
 
-# 在package.json的scripts中增加运行命令
+# Add run commands to scripts of package.json
 "scripts": {
   "serve": "bs"
 }
@@ -61,31 +61,31 @@ cd ./project
 npm run serve
 # or
 yarn serve
-# 就是这么简单!
+# It's that simple!
 ```
 
-## 命令行
+## The command line
 
 ```bash
-# 使用 bs -h 查看
+# use bs -h to view
 bs -h
 
 Usage: bs [options]
 
 Options:
-  -v --version               输出当前版本号
-  -d, --debug                开启debug模式
-  -c, --config <configName>  指定配置文件,例:./bs.config.js
-  -p, --port <port>          指定服务启动端口号,例:3000
-  -t, --timeout <timeout>    网络请求代理超时时间,单位毫秒,例:3000
-  -b, --base <base>          指定静态资源文件夹,可以添加多个,使用英文逗号隔开,默认当前根目录,例:./
-  -o, --open                 服务启动时是否自动打开浏览器
-  -i, --index <index>        指定入口文件,指定后打开路径自动查找入口文件,例:index.html
-  -w, --watch <watch file>   指定需要监听的文件或文件夹,文件变化时自动刷新浏览器,文件夹内文件监听不支持递归文件,例:dist,./index.html
-  -h, --help                 查看帮助
+  -v --version               output the version number
+  -d, --debug                Enabling the Debug mode
+  -c, --config <configName>  Specify the configuration file,eg:./bs.config.js
+  -p, --port <port>          Specify the service port number,eg:3000
+  -t, --timeout <timeout>    Specifies the request timeout period in milliseconds,eg:3000
+  -b, --base <base>          Specify static directory root paths separated by commas (,) if multiple paths are used,eg:./
+  -o, --open                 Specifies whether to start the browser after starting the service
+  -i, --index <index>        Specified entry file,eg:index.html
+  -w, --watch <watch file>   Specifies the folder or file to listen on. Subfolders are not supported. Use commas to separate multiple folders,eg:dist,./index.html
+  -h, --help                 display help for command
 
 Commands:
-  kill [options] [port]      杀死端口占用或直接杀死进程.
+  kill [options] [port]      Kills the specified occupied port or ID of the process.
 ```
 
 ```bash
@@ -103,7 +103,7 @@ bs kill --pids 74738
 bs kill --pids 74738,65425
 ```
 
-## 配置文件
+## use the configuration file
 
 ```js
 // Add configuration files to the project root directory bs.config.js
