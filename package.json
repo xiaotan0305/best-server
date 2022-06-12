@@ -1,6 +1,6 @@
 {
   "name": "best-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple server for developing static pages. You can enable proxy requests, or you can customize requests to return data",
   "bin": {
     "bs": "cli.js"
@@ -20,8 +20,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/tankunpeng/best-server"
+    "url": "https://github.com/xiaotan0305/best-server"
   },
+  "bugs": {
+    "url": "https://github.com/xiaotan0305/best-server/issues"
+  },
+  "homepage": "https://github.com/xiaotan0305/best-server/wiki",
   "author": "tkp1989@foxmail.com",
   "engines": {
     "node": ">= 12.0.0"
