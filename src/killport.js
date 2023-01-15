@@ -1,7 +1,7 @@
 /*
  * @Author: tankunpeng
  * @Date: 2022-06-11 21:49:33
- * @LastEditTime: 2022-06-12 01:34:26
+ * @LastEditTime: 2023-01-15 20:46:43
  * @LastEditors: tankunpeng
  * @Description: 关闭端口号
  * Come on, worker!
@@ -12,7 +12,7 @@ const { chalk, error, done, info } = require('./utils/logger');
 module.exports = function (options) {
   const { port, pids } = options;
   if (!port && !pids) {
-    error(`Neither ${chalk.red('prot')} nor ${chalk.red('pids')} were found`);
+    error(`Neither ${chalk.cyan('prot')} nor ${chalk.cyan('pids')} were found`);
     process.exit(1);
   }
   if (port) {

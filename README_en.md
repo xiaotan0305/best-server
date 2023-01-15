@@ -86,6 +86,7 @@ Options:
 
 Commands:
   kill [options] [port]      Kills the specified occupied port or ID of the process.
+  config <init> [directory]  Initializes the configuration file to the specified directory, which is the current directory by default
 ```
 
 ```bash
@@ -101,6 +102,13 @@ bs kill 3000
 bs kill --pids 74738
 # Kill multiple process ids
 bs kill --pids 74738,65425
+```
+
+```bash
+# Initialize the configuration file in the current directory
+bs config init
+# Initializes the configuration file in the specified directory
+bs config init ../
 ```
 
 ## use the configuration file

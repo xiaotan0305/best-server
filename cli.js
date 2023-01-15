@@ -6,12 +6,13 @@ const { checkNodeVersion, updateCheck } = require('./src/utils/env');
 const { chalk, error, debugConfig, updateDebugMode } = require('./src/utils/logger');
 const createServer = require('./src/createServer');
 const kill = require('./src/killport');
+const initConfig = require('./src/initConfig');
 
 const enginesNodeVersion = pkg.engines.node;
 
 const checkPass = checkNodeVersion(enginesNodeVersion);
 if (!checkPass) {
-  error(`You are using Node ${process.version}, but this version of ${pkg.name} requires Node ${enginesNodeVersion}.\r\nPlease upgrade your Node version`);
+  error(`You are using Node ${chalk.cyan(process.version)}, but this version of ${chalk.cyan(pkg.name)} requires Node ${chalk.cyan(enginesNodeVersion)}.\r\nPlease upgrade your Node version`);
   process.exit(1);
 }
 
@@ -44,6 +45,13 @@ program.command('kill')
   .option('-P, --pids <pids>', 'Specifies the ID of the process to kill, separated by commas,eg: 2344,5566')
   .action((port, options) => {
     kill({ port, ...options });
+  });
+
+program.command('config <init>')
+  .description('Initializes the configuration file to the specified directory, which is the current directory by default')
+  .argument('[directory]', 'Configuration file initialization directory address')
+  .action((method, dir, options) => {
+    initConfig({ method, dir, ...options });
   });
 
 program.parse();

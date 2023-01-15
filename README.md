@@ -87,6 +87,7 @@ Options:
 
 Commands:
   kill [options] [port]      杀死端口占用或直接杀死进程.
+  config <init> [directory]  初始化配置文件到指定目录，默认为当前目录
 ```
 
 ```bash
@@ -102,6 +103,13 @@ bs kill 3000
 bs kill --pids 74738
 # 杀死多个进程ID
 bs kill --pids 74738,65425
+```
+
+```bash
+# 在当前目录初始化配置文件
+bs config init
+# 在指定目录初始化配置文件
+bs config init ../
 ```
 
 ## 配置文件
