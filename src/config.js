@@ -1,12 +1,13 @@
 /*
  * @Author: tankunpeng
  * @Date: 2021-03-15 22:50:10
- * @LastEditTime: 2022-06-10 19:13:55
+ * @LastEditTime: 2023-01-20 14:54:13
  * @LastEditors: tankunpeng
  * @Description:
  * Come on, worker!
  */
 const config = {
+  debug: false,
   host: 'localhost',
   port: 3000,
   index: 'index.html',
@@ -15,7 +16,8 @@ const config = {
   base: process.cwd(),
   proxy: {},
   mock: {},
-  watch: []
+  watch: [],
+  watchExtnames: []
 };
 
 module.exports = config;

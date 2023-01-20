@@ -617,7 +617,7 @@ commander@^9.3.0:
 
 commander@~0.6.1:
   version "0.6.1"
-  resolved "https://registry.npmmirror.com/commander/-/commander-0.6.1.tgz#fa68a14f6a945d54dbbe50d8cdb3320e9e3b1a06"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-0.6.1.tgz#fa68a14f6a945d54dbbe50d8cdb3320e9e3b1a06"
   integrity sha512-0fLycpl1UMTGX257hRsu/arL/cUbcvQM4zMKwvLvzXtfdezIV4yotPS2dYtknF+NmEfWSoCEF6+hj9XLm/6hEw==
 
 commander@~2.19.0:
@@ -630,9 +630,9 @@ concat-map@0.0.1:
   resolved "https://registry.npmmirror.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
-connect-body-rewrite@0.0.4:
+connect-body-rewrite@^0.0.4:
   version "0.0.4"
-  resolved "https://registry.npmmirror.com/connect-body-rewrite/-/connect-body-rewrite-0.0.4.tgz#d2d444d19630dccf1bef81231aec145dad0f402b"
+  resolved "https://registry.yarnpkg.com/connect-body-rewrite/-/connect-body-rewrite-0.0.4.tgz#d2d444d19630dccf1bef81231aec145dad0f402b"
   integrity sha512-D/hI7mSZ+7vdiBZ/Y9p+qauSZYRsG2uwjyReeykIOnOPVip/75g0FmCHwjvqvDUz05vObApehcHDbGkk2zzq0g==
 
 connect-timeout@^1.9.0:
@@ -699,7 +699,7 @@ d@1, d@^1.0.1:
     es5-ext "^0.10.50"
     type "^1.0.1"
 
-debug@*, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
+debug@*, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2:
   version "4.3.4"
   resolved "https://registry.npmmirror.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
@@ -722,7 +722,7 @@ debug@^3.2.7:
 
 debug@~0.7.0:
   version "0.7.4"
-  resolved "https://registry.npmmirror.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
   integrity sha512-EohAb3+DSHSGx8carOSKJe8G0ayV5/i609OD0J2orCkuyae7SyZSz2aoLmQF2s0Pj5gITDebwPH7GFBlqOUQ1Q==
 
 deep-extend@^0.6.0:
@@ -789,16 +789,6 @@ duration@^0.2.2:
   dependencies:
     d "1"
     es5-ext "~0.10.46"
-
-easy-livereload@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.npmmirror.com/easy-livereload/-/easy-livereload-1.4.4.tgz#8a9338bc432349e048a18ba1d67646d249e09328"
-  integrity sha512-e5wyJJDYboOCkoFbABI7ppu25Xz7EIghyoGZQI+HUOqzmmnD+oKYU+1QAIAUtE0wjTS164Un2tfj5p0Ehu37Ww==
-  dependencies:
-    connect-body-rewrite "0.0.4"
-    livereload-js "^2.2.2"
-    livereload-server "^0.2.3"
-    node-watch "^0.6.4"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -1775,21 +1765,21 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-livereload-js@^2.2.2:
-  version "2.4.0"
-  resolved "https://registry.npmmirror.com/livereload-js/-/livereload-js-2.4.0.tgz#447c31cf1ea9ab52fc20db615c5ddf678f78009c"
-  integrity sha512-XPQH8Z2GDP/Hwz2PCDrh2mth4yFejwA1OZ/81Ti3LgKyhDcEjsSsqFWZojHG0va/duGd+WyosY7eXLDoOyqcPw==
+livereload-js@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/livereload-js/-/livereload-js-3.4.1.tgz#ba90fbc708ed1b9a024bb89c4ee12c96ea03d66f"
+  integrity sha512-5MP0uUeVCec89ZbNOT/i97Mc+q3SxXmiUGhRFOTmhrGPn//uWVQdCvcLJDy64MSBR5MidFdOR7B9viumoavy6g==
 
 livereload-protocol@~0.2.2:
   version "0.2.2"
-  resolved "https://registry.npmmirror.com/livereload-protocol/-/livereload-protocol-0.2.2.tgz#34a8541bcd4d18a61fb2e324f6ae314d4e7feb77"
+  resolved "https://registry.yarnpkg.com/livereload-protocol/-/livereload-protocol-0.2.2.tgz#34a8541bcd4d18a61fb2e324f6ae314d4e7feb77"
   integrity sha512-FfOjB/mFkfQpIopsIuO8+Ndqs87iiA64JhBkRSuxlRcvwflUBd6GSaPGecVyBqUWX+FgDN5lLd2/zlI4ZFtsLg==
   dependencies:
     debug "~0.7.0"
 
 livereload-server@^0.2.3:
   version "0.2.3"
-  resolved "https://registry.npmmirror.com/livereload-server/-/livereload-server-0.2.3.tgz#0204ba43f400e12ce6b427f41a7e9bd854cab756"
+  resolved "https://registry.yarnpkg.com/livereload-server/-/livereload-server-0.2.3.tgz#0204ba43f400e12ce6b427f41a7e9bd854cab756"
   integrity sha512-2yCi0o/4CK63FFWbtzre7qKSAYsXtFTOHyjvlcmfU4JwyVETd8g2C/FS2pjUuIbt4CwOiq5dVhxlZcCBe+NQZg==
   dependencies:
     debug "~0.7.0"
@@ -1970,10 +1960,10 @@ node-releases@^2.0.6:
   resolved "https://registry.npmmirror.com/node-releases/-/node-releases-2.0.8.tgz#0f349cdc8fcfa39a92ac0be9bc48b7706292b9ae"
   integrity sha512-dFSmB8fFHEH/s81Xi+Y/15DQY6VHW81nXRj86EMSL3lmuTmK1e+aT4wrFCkTbm+gSwkw4KpX+rT/pMM2c1mF+A==
 
-node-watch@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.npmmirror.com/node-watch/-/node-watch-0.6.4.tgz#50e564046eb7be15151c25f9c5aac4b5f495c291"
-  integrity sha512-cI6CHzivIFESe8djiK3Wh90CtWQBxLwMem8x8S+2GSvCvFgoMuOKVlfJtQ/2v3Afg3wOnHl/+tXotEs8z5vOrg==
+node-watch@^0.7.3:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/node-watch/-/node-watch-0.7.3.tgz#6d4db88e39c8d09d3ea61d6568d80e5975abc7ab"
+  integrity sha512-3l4E8uMPY1HdMMryPRUAl+oIHtXtyiTlIiESNSVSNxcPfzAFzeTbXFQkZfAwBbo0B1qMSG8nUABx+Gd+YrbKrQ==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
@@ -2070,7 +2060,7 @@ optionator@^0.9.1:
 
 options@latest:
   version "0.0.6"
-  resolved "https://registry.npmmirror.com/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
+  resolved "https://registry.yarnpkg.com/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
   integrity sha512-bOj3L1ypm++N+n7CEbbe473A414AB7z+amKYshRb//iuL3MpdDCLhPnw6aVTdKB9g5ZRVHIEp8eUln6L2NUStg==
 
 p-limit@^3.0.2:
@@ -2512,7 +2502,7 @@ text-table@^0.2.0:
 
 tinycolor@0.x:
   version "0.0.1"
-  resolved "https://registry.npmmirror.com/tinycolor/-/tinycolor-0.0.1.tgz#320b5a52d83abb5978d81a3e887d4aefb15a6164"
+  resolved "https://registry.yarnpkg.com/tinycolor/-/tinycolor-0.0.1.tgz#320b5a52d83abb5978d81a3e887d4aefb15a6164"
   integrity sha512-+CorETse1kl98xg0WAzii8DTT4ABF4R3nquhrkIbVGcw1T8JYs5Gfx9xEfGINPUZGDj9C4BmOtuKeaTtuuRolg==
 
 to-fast-properties@^2.0.0:
@@ -2658,7 +2648,7 @@ vary@~1.1.2:
 
 websocket.io@~0.2.1:
   version "0.2.1"
-  resolved "https://registry.npmmirror.com/websocket.io/-/websocket.io-0.2.1.tgz#79eaf174b91ecfa4fbf14ffe268871c052e47d2a"
+  resolved "https://registry.yarnpkg.com/websocket.io/-/websocket.io-0.2.1.tgz#79eaf174b91ecfa4fbf14ffe268871c052e47d2a"
   integrity sha512-XTg33Asg5U69rfjWTJ6qnwHLBhvpXylJto4tpNMLpHZSZUHLyDvF+OgLpBCwmQLK65txJuPIdqzVvcK89PHw5Q==
   dependencies:
     debug "*"
@@ -2706,7 +2696,7 @@ wrappy@1:
 
 ws@0.4.20:
   version "0.4.20"
-  resolved "https://registry.npmmirror.com/ws/-/ws-0.4.20.tgz#f44b63f46b9edfc457309c720bcc0f83f2fc5874"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-0.4.20.tgz#f44b63f46b9edfc457309c720bcc0f83f2fc5874"
   integrity sha512-tViqnQPBIxGUvY9hdWc6peJtkITHicZnxwBQCAnMx1ADp2zTjKEE2l9usSHU98oGazq/UirOATTuLSektBFpxQ==
   dependencies:
     commander "~0.6.1"

@@ -1,7 +1,7 @@
 /*
  * @Author: tankunpeng
  * @Date: 2022-06-07 14:55:01
- * @LastEditTime: 2022-06-11 22:45:57
+ * @LastEditTime: 2023-01-20 15:11:37
  * @LastEditors: tankunpeng
  * @Description:
  * Come on, worker!
@@ -19,9 +19,13 @@ exports.checkNodeVersion = (required) => {
 };
 
 exports.updateCheck = async () => {
-  checkForUpdate(pkg).then((update) => {
-    info(`${chalk.bgRed('UPDATE AVAILABLE')} The latest version of \`serve\` is ${update.latest}`);
-  }).catch((err) => {
-    debugError(`The update check failed: ${err.message}`);
-  });
+  checkForUpdate(pkg)
+    .then((update) => {
+      if (update) {
+        info(`${chalk.bgRed('UPDATE AVAILABLE')} The latest version of \`serve\` is ${update.latest}`);
+      }
+    })
+    .catch((err) => {
+      debugError(`The update check failed: ${err.message}`);
+    });
 };

@@ -1,7 +1,7 @@
 /*
  * @Author: tankunpeng
  * @Date: 2021-03-15 22:50:10
- * @LastEditTime: 2022-06-11 23:01:21
+ * @LastEditTime: 2023-01-20 15:13:58
  * @LastEditors: tankunpeng
  * @Description:
  * Come on, worker!
@@ -14,10 +14,10 @@ const open = require('open');
 const ip = require('ip');
 const portfinder = require('portfinder');
 const { isArray, isObject, isString, isFunction } = require('./utils');
-const { log, chalk, warn, error, debugLog, done } = require('./utils/logger');
+const { log, chalk, warn, error, debugLog, done, debugConfig } = require('./utils/logger');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const handler = require('serve-handler');
-const livereload = require('easy-livereload');
+const livereload = require('./easy-livereload');
 
 const app = express();
 
@@ -31,6 +31,7 @@ class WebServer {
   }
 
   init() {
+    this.setDebug(this.debug);
     this.setTimeout();
     this.addViewEngine();
     this.addProxy(this.proxy);
@@ -40,8 +41,13 @@ class WebServer {
     // this.add404Route();
     this.addStaticHandler();
 
-
     this.start();
+  }
+
+  setDebug(debug) {
+    if (debug) {
+      debugConfig.enabled = true;
+    }
   }
 
   setTimeout() {
@@ -84,10 +90,7 @@ class WebServer {
     app.use((req, res) => {
       handler(req, res, {
         cleanUrls: true,
-        unlisted: [
-          '.DS_Store',
-          '.git'
-        ]
+        unlisted: ['.DS_Store', '.git']
       });
     });
   }
@@ -164,19 +167,30 @@ class WebServer {
       const pathName = path.resolve(process.cwd(), watchItem);
       if (!fs.existsSync(pathName)) {
         log();
-        warn(`The path ${chalk.red(pathName)} does not exist. Check the ${chalk.red('watch')} configuration. skip watch..`);
+        warn(
+          `The path ${chalk.red(pathName)} does not exist. Check the ${chalk.red('watch')} configuration. skip watch..`
+        );
         continue;
       }
       log(`Watch created: ${chalk.cyan(pathName)}`, 'Watch');
       watchDirs.push(pathName);
     }
-    if (watchArr.length) {
-      app.use(livereload({
-        watchDirs,
-        checkFunc(file) {
-          return /\.(css|js|html|htm)$/.test(file) || file === '';
-        }
-      }));
+    if (watchDirs.length) {
+      const reg = new RegExp(
+        this.watchExtnames.length ? `\\.(${this.watchExtnames.join('|')})$` : '\\.(css|js|html|htm)$'
+      );
+      app.use(
+        livereload({
+          watchDirs,
+          checkFunc(file) {
+            const refresh = reg.test(file) || file === '';
+            if (refresh) {
+              debugLog(`${chalk.yellow(file)} changed,browser auto refresh`, 'Watch');
+            }
+            return refresh;
+          }
+        })
+      );
     }
   }
 
@@ -184,31 +198,34 @@ class WebServer {
     const serverPort = parseInt(this.port, 10) || 3000;
     const serverIp = ip.address();
 
-    portfinder.getPort({
-      port: serverPort,
-      stopPort: serverPort + 100
-    }, (err, port) => {
-      if (err) {
-        error(err.message);
-        process.exit(1);
-      }
-      this.port = port;
-      debugLog('server start for port:', port);
-      if (port !== serverPort) {
-        log();
-        warn(`Port ${chalk.red(serverPort)} is used. Use port ${chalk.green(port)} to start services`);
-      }
-      app.listen(port, () => {
-        log();
-        done(' best-server running at:');
-        log(`         - Local:   ${chalk.cyan(`http://localhost:${port}`)}`);
-        log(`         - Network: ${chalk.cyan(`http://${serverIp}:${port}`)}`);
-        log();
-        if (this.open) {
-          open(`http://localhost:${port}`);
+    portfinder.getPort(
+      {
+        port: serverPort,
+        stopPort: serverPort + 100
+      },
+      (err, port) => {
+        if (err) {
+          error(err.message);
+          process.exit(1);
         }
-      });
-    });
+        this.port = port;
+        debugLog(`server start for port: ${chalk.green(port)}`);
+        if (port !== serverPort) {
+          log();
+          warn(`Port ${chalk.red(serverPort)} is used. Use port ${chalk.green(port)} to start services`);
+        }
+        app.listen(port, () => {
+          log();
+          done(' best-server running at:');
+          log(`         - Local:   ${chalk.cyan(`http://localhost:${port}`)}`);
+          log(`         - Network: ${chalk.cyan(`http://${serverIp}:${port}`)}`);
+          log();
+          if (this.open) {
+            open(`http://localhost:${port}`);
+          }
+        });
+      }
+    );
   }
 }
 
