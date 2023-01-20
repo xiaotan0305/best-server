@@ -1,11 +1,3 @@
-/*
- * @Author: tankunpeng
- * @Date: 2022-06-08 11:29:56
- * @LastEditTime: 2023-01-20 14:53:53
- * @LastEditors: tankunpeng
- * @Description: 配置文件默认配置文件，可以在此基础上修改
- * Come on, worker!
- */
 module.exports = {
   // 是否开启debug
   debug: false,
