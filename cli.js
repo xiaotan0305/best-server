@@ -3,7 +3,7 @@
 const program = require('commander');
 const pkg = require('./package.json');
 const { checkNodeVersion, updateCheck } = require('./src/utils/env');
-const { chalk, error, debugConfig, updateDebugMode } = require('./src/utils/logger');
+const { chalk, error, debugConfig } = require('./src/utils/logger');
 const createServer = require('./src/createServer');
 const kill = require('./src/killport');
 const initConfig = require('./src/initConfig');
@@ -42,7 +42,6 @@ program
   .action((options) => {
     if (options.debug) {
       debugConfig.enabled = true;
-      updateDebugMode();
     }
     createServer(options);
   });

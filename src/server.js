@@ -1,7 +1,7 @@
 /*
  * @Author: tankunpeng
  * @Date: 2021-03-15 22:50:10
- * @LastEditTime: 2023-01-20 15:13:58
+ * @LastEditTime: 2023-01-28 19:27:55
  * @LastEditors: tankunpeng
  * @Description:
  * Come on, worker!
@@ -101,7 +101,8 @@ class WebServer {
       return;
     }
     const commonProxyOps = {
-      logLevel: 'warn'
+      logLevel: 'warn',
+      changeOrigin: true
     };
     const keys = Object.keys(proxy);
     if (keys.length) {
@@ -118,6 +119,27 @@ class WebServer {
         } else if (isObject(item)) {
           proxyOps = item;
         }
+        app.use(key, (req, res, next) => {
+          const space = ' '.repeat(6);
+          const splitStr = '='.repeat(50);
+          log();
+          debugLog(new Date().toLocaleString());
+          debugLog(splitStr);
+          debugLog(`Proxy trigger: ${chalk.cyan(key)} -> ${chalk.yellow(proxyOps.target)}`, 'Proxy');
+          debugLog(`${space}method: ${chalk.cyan(req.method)}`);
+          debugLog(`${space}url: ${chalk.cyan(req.originalUrl && req.originalUrl.split('?')[0]) || ''}`);
+          if (req.query && Object.keys(req.query).length) {
+            debugLog(`${space}query: ${chalk.cyan(JSON.stringify(req.query))}`);
+          }
+          if (req.params && Object.keys(req.params).length) {
+            debugLog(`${space}params: ${chalk.cyan(JSON.stringify(req.params))}`);
+          }
+          if (req.body && Object.keys(req.body).length) {
+            debugLog(`              body: ${chalk.cyan(JSON.stringify(req.body))}`);
+          }
+          debugLog(splitStr);
+          next();
+        });
         app.use(key, createProxyMiddleware({ ...commonProxyOps, ...proxyOps }));
         log(`Proxy created: ${chalk.cyan(key)} -> ${chalk.yellow(proxyOps.target)}`, 'Proxy');
       }
@@ -146,6 +168,27 @@ class WebServer {
           warn(`${chalk.red('mock')} configuration ${chalk.red('key')} is not an function, skip mock.`);
           continue;
         }
+        app.use(key, (req, res, next) => {
+          const space = ' '.repeat(6);
+          const splitStr = '='.repeat(50);
+          log();
+          debugLog(new Date().toLocaleString());
+          debugLog(splitStr);
+          debugLog(`Mock trigger: ${chalk.cyan(key)}`, 'Mock');
+          debugLog(`${space}method: ${chalk.cyan(req.method)}`);
+          debugLog(`${space}url: ${chalk.cyan(req.originalUrl && req.originalUrl.split('?')[0]) || ''}`);
+          if (req.query && Object.keys(req.query).length) {
+            debugLog(`${space}query: ${chalk.cyan(JSON.stringify(req.query))}`);
+          }
+          if (req.params && Object.keys(req.params).length) {
+            debugLog(`${space}params: ${chalk.cyan(JSON.stringify(req.params))}`);
+          }
+          if (req.body && Object.keys(req.body).length) {
+            debugLog(`              body: ${chalk.cyan(JSON.stringify(req.body))}`);
+          }
+          debugLog(splitStr);
+          next();
+        });
         app.use(key, item.target);
         log(`Mock created: ${chalk.cyan(key)}`, 'Mock ');
       }
